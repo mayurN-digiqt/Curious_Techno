@@ -15,7 +15,7 @@ const theme = createTheme();
 const UserDetails = () => {
     let history = useNavigate();
     const user = JSON.parse(localStorage.getItem('userDetails'))
-    const [data, setdata] = useState({ username:"", email:"",  password:"",role:"",mobile:""});
+    const [data, setdata] = useState({ username:"", email:"", role:"",mobile:""});
     const [formerror, setformerror]= useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [disabled, setDisabled] = useState(true);
@@ -51,7 +51,6 @@ const UserDetails = () => {
             // eslint-disable-next-line
             const regexnum = /^\b\d{4}[-.]?\d{3}[-.]?\d{3}\b$/;
             const regexemail =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i;
-            const regexpassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
             const regexchar = /^[A-Za-z]+$/;
             if(!value.username){
               error.username = "Username Required....";
@@ -62,11 +61,6 @@ const UserDetails = () => {
               error.email = "Email Address Required....";
             }else if(!regexemail.test(value.email)){
               error.email = "Enter Valid email Address....";
-            }
-            if(!value.password){
-              error.password = "Password  Required....";
-            }else if(!regexpassword.test(value.password)){
-              error.password = "Please Enter Valid Password";
             }
             if(!value.role){
               error.role = "Role are Required....";
@@ -141,23 +135,7 @@ const UserDetails = () => {
                      {formerror.email}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      id="Password"
-                      label="Password"
-                      name="password"
-                      autoComplete="family-name"
-                      inputProps={{
-                        maxLength: 10
-                      }}
-                      value={data.password} onChange={onChangeData}
-                    />
-                    <Typography component="h4" color="red" >
-                     {formerror.password}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} >
                     <TextField
                       fullWidth
                       id="role"
