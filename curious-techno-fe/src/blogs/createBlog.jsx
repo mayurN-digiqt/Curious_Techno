@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
-import { serialize } from "bson";
 
 
 const theme = createTheme();
@@ -41,6 +40,7 @@ const CreateBlog = () => {
     console.log(blogDetails.data.blog.uuid)
     const uuid =  blogDetails.data.blog.uuid;  
     const blogData = await axios.post(`http://localhost:5000/users/blogs/image-upload/${uuid}`, formData,{ headers:{"Content-Type" : "multipart/form-data"}   });
+    console.log(blogData)
     history("/home");
   }
 
@@ -52,6 +52,7 @@ const CreateBlog = () => {
   const loadUser = async () =>{
   
         const result =  await axios.get(`http://localhost:5000/users/blogs/create-blog/${userData.uuid}`,  { headers: {"Authorization" : `Bearer ${userData.token}`} });
+        console.log(result)
       }
 
   return (

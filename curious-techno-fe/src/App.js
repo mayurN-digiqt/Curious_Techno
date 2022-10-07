@@ -16,8 +16,6 @@ import YourBlog from "./users/yourBlog";
 
 function App() {
   const [data,setData] = useState(true)
-  const user = JSON.parse(localStorage.getItem('userDetails')) 
-    
   const getUser = (data) =>{
     console.log(data)
     if(localStorage.getItem('userDetails')){

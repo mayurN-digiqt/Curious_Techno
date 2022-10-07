@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../css/Blog.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-const Blog = ({ post: { title, description,
-	imagePath, uuid, user }, index }) => {
+const Blog = (props) => {
+	const { post: { title, imagePath, uuid, user } } = props
 	let history = useNavigate();
 	const [blogId, setBlogId] = useState()
 	const onChange = (e) => {
