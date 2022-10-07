@@ -1,22 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/Blog.css";
-import { useNavigate, Link, useLoaderData } from "react-router-dom";
 import Blog from "../blogs/Blog";
 
 const YourBlog = () => {
-    let history = useNavigate();
     const user = JSON.parse(localStorage.getItem('userDetails'))
-    const [blogId, setBlogId] = useState()
     const [blogs, setBlogs] = useState([])
-    const onChange = (e) => {
-        setBlogId(e.target.value)
-    }
-    if (blogId) {
-        console.log(blogId)
-        localStorage.setItem('blogId', blogId)
-        history('/blog-details')
-    }
+    
     useEffect(() => {
         loadData()
     }, [])

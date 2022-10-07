@@ -1,10 +1,7 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import "../css/Blog.css";
-import { Link } from "react-router-dom";
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { CodeOutlined } from "@material-ui/icons";
 
 const BlogDetails = () => {
     const [blogDetails,setBlogDetails] = useState({blogdata:''})
@@ -14,9 +11,7 @@ const BlogDetails = () => {
     const blogDetailsLoad = async() =>{
         const id = localStorage.getItem("blogId");
         const useData = JSON.parse(localStorage.getItem('userDetails'))
-        console.log(id)
         const blogData = await axios.get(`http://localhost:5000/users/blogs/${id}`,{ headers: {"Authorization" : `Bearer ${useData.token}`}})
-        console.log(blogData.data.blog)
         const blog = blogData.data.blog;
         setBlogDetails({...blogDetails,blogdata:blog})
     }

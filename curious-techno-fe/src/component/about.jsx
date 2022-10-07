@@ -1,7 +1,6 @@
 import React from 'react';
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { Link } from "react-router-dom";
 
 export default function About() {
   return (
